@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Imprenta Central - Pedidos</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="app__header">
+        <div>
+          <p class="app__eyebrow">Imprenta Central</p>
+          <h1>Gestión de pedidos de impresión</h1>
+          <p class="app__subtitle">
+            Captura solicitudes, define especificaciones y comparte el resumen con tu equipo.
+          </p>
+        </div>
+        <div class="app__status">
+          <span>Pedidos hoy</span>
+          <strong id="orderCount">0</strong>
+        </div>
+      </header>
+
+      <main class="app__grid">
+        <section class="card">
+          <h2>Nuevo pedido</h2>
+          <form id="orderForm" class="form">
+            <label>
+              Nombre del cliente
+              <input type="text" name="client" placeholder="Ej. Editorial Norte" required />
+            </label>
+            <label>
+              Contacto
+              <input type="text" name="contact" placeholder="Ej. Ana Gómez" required />
+            </label>
+            <label>
+              Teléfono / WhatsApp
+              <input type="tel" name="phone" placeholder="Ej. +54 9 11 5555 1234" required />
+            </label>
+            <label>
+              Producto
+              <select name="product" required>
+                <option value="">Selecciona un producto</option>
+                <option>Tarjetas personales</option>
+                <option>Folletos</option>
+                <option>Catálogos</option>
+                <option>Etiquetas</option>
+                <option>Revistas</option>
+                <option>Afiches</option>
+              </select>
+            </label>
+            <label>
+              Cantidad
+              <input type="number" name="quantity" min="1" value="100" required />
+            </label>
+            <label>
+              Tamaño
+              <select name="size" required>
+                <option value="">Selecciona un tamaño</option>
+                <option>A4</option>
+                <option>A5</option>
+                <option>A6</option>
+                <option>10x15 cm</option>
+                <option>Personalizado</option>
+              </select>
+            </label>
+            <label>
+              Papel
+              <select name="paper" required>
+                <option value="">Tipo de papel</option>
+                <option>Couché 150g</option>
+                <option>Couché 300g</option>
+                <option>Obra 90g</option>
+                <option>Reciclado 120g</option>
+              </select>
+            </label>
+            <label>
+              Acabado
+              <select name="finish" required>
+                <option value="">Selecciona un acabado</option>
+                <option>Mate</option>
+                <option>Brillante</option>
+                <option>Soft touch</option>
+                <option>Laminado + UV</option>
+              </select>
+            </label>
+            <label>
+              Fecha de entrega
+              <input type="date" name="delivery" required />
+            </label>
+            <label>
+              Notas adicionales
+              <textarea name="notes" rows="3" placeholder="Colores especiales, archivos pendientes, etc."></textarea>
+            </label>
+            <button class="btn" type="submit">Agregar pedido</button>
+          </form>
+        </section>
+
+        <section class="card">
+          <h2>Pedidos en cola</h2>
+          <div id="emptyState" class="empty">
+            <p>No hay pedidos cargados todavía.</p>
+            <p>Completa el formulario para empezar.</p>
+          </div>
+          <div id="orders" class="orders"></div>
+        </section>
+
+        <section class="card card--highlight">
+          <h2>Resumen del pedido seleccionado</h2>
+          <div id="summary" class="summary">
+            <p class="summary__placeholder">Selecciona un pedido para ver los detalles.</p>
+          </div>
+          <button id="copyButton" class="btn btn--secondary" type="button">Copiar resumen</button>
+        </section>
+      </main>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
